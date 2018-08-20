@@ -10,10 +10,11 @@
 
 @interface AppDelegate ()
 
+
+
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -53,10 +54,33 @@
         }
     }
     
-    NSLog(@"%@", mutableArray);
+    //NSLog(@"%@", mutableArray);
+    
+    
+#pragma mark - Level "Master"
+    // Level "Master"
+    
+    NSMutableArray *reverseArray = [NSMutableArray array];
+    
+    for (NSString *string in mutableArray) {
+        
+        NSMutableString *revereseString = [NSMutableString string];
+        NSMutableArray *reverseStringArray = [NSMutableArray array];
+        reverseStringArray = (NSMutableArray*) [string componentsSeparatedByString:@" "];
+        
+        for (NSString *str in [reverseStringArray reverseObjectEnumerator]) {
+            
+            [revereseString appendFormat:@"%@ ", str];
+        }
+        
+        [reverseArray addObject:revereseString];
+    }
+    
+    NSLog(@"%@", reverseArray);
     
     return YES;
 }
+
 
 
 //text = [text substringToIndex:10];
